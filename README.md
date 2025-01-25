@@ -1,5 +1,5 @@
 # War_simulation
-The idea behind this project is to code a war simulation in Python. This project was developed in the beginning of 2022, during the same time Russia decided to invade Ukraine. Therefore, the choice of Ukraine as the focus for this simulation became kind of obvious.
+The idea behind this project is to code a war simulation in Python (Jupyter Notebook). This project was developed in the beginning of 2022, during the same time Russia decided to invade Ukraine. Therefore, the choice of Ukraine as the focus for this simulation became kind of obvious.
 
 The goal of this simulation is to see, by fixing two constraints :
 - Number of soldiers
@@ -26,6 +26,8 @@ The libraries used are :
 - Shapefile
 - Matplotlib
 - Seaborn
+
+The python file of the simulation is available but I used Jupyter notebook to run the program.
 
 ENJOY ! 
 
