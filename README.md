@@ -8,8 +8,7 @@ The goal of this simulation is to see, by fixing two constraints :
 the turnout of the war. 
 
 It's a really simple simulation that doesn't have for goal to depict the real war happening in Ukraine. In this simulation, we'll only focus on the attacker and the constraints imposed to him. If the day-limit is reached and the attacker didn't succeed in taking Kyiv, the war is lost. The war is also lost if the attacker has no more soldiers. Indeed, in this simulation, we'll only focus on 27 main cyties, each city representing a region of the country:
-- Cherkasy, Chernihiv, Chernivtsi, Crimea, Dnipropetrovs'k, Donets'k, Ivano-Frankisv'k, Kharkiv, Kherson, Khmel'nyts'kyy, Kyiv City, Kyiv, Kirovohrad,  
-L'viv, Luhans'k, Mykolayiv, Odessa, Poltava, Rivne, Sevastopol', Sumy, Ternopil', Transcarpathia, Vinnytsya, Volyn, Zaporizhzhya, Zhytomyr
+- Cherkasy, Chernihiv, Chernivtsi, Crimea, Dnipropetrovs'k, Donets'k, Ivano-Frankisv'k, Kharkiv, Kherson, Khmel'nyts'kyy, Kyiv City, Kyiv, Kirovohrad, L'viv, Luhans'k, Mykolayiv, Odessa, Poltava, Rivne, Sevastopol', Sumy, Ternopil', Transcarpathia, Vinnytsya, Volyn, Zaporizhzhya, Zhytomyr
 
 The map of Ukraine will be divided in 3 danger zones:
 - Zone 1 : Luhans'k, Sumy, Kharkiv, Donets'k, Zaporizhzhya, Crimea, Sevastopol', Kherson, Mykolayiv, Odessa, Chernivtsi, Ivano-Frankisv'k, Transcarpathia, Volyn, L'viv
