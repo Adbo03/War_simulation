@@ -17,7 +17,7 @@ The map of Ukraine will be divided in 3 danger zones:
 
 Each danger zone has an impact on the enemy's army. If the adversary's army battle through a Zone 1 region, it will suffer a loss of 15% of its soldiers and it will take 10 days to conquer. If it goes through a Zone 2 region, it will be a loss of 25% of its soldiers and a 25 days siege to conquer it. Finally, a loss of 50% of its soldiers will be inflicted in a Zone 3 region and the siege will take 50 days.
 
-The choice of Ukraine for this simulation imply that the attacker is Russia. Therefore, for realistic purposes, the attacker can only attack from the east of Ukraine (not allowed to attack from Belarus). The goal of this program is to choose the route taken by the enemy automatically. When a region has been conquered, the next one is chosen among the neighboring regions automatically, but not randomly. The decision is taken depending on the difficulty to conquer of each neighboring regions.
+The choice of Ukraine for this simulation imply that the attacker is Russia. Therefore, for realistic purposes, the attacker can only attack from the east of Ukraine (not allowed to attack from Belarus). The goal of this program is to choose the route taken by the enemy automatically. When a region has been conquered, the next one is chosen among the neighboring regions automatically, but not randomly. The decision is taken depending on the difficulty to conquer of each neighboring regions, the goal being to choose the more straightforward route possible.
 
 In the end, a GIF image is created to depict the outcome of the war. The creation of the map wasn't done by me. I found the code on github but I no longer have the github profile of the person who coded it (but thanks a lot !).
 
