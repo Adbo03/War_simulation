@@ -9,7 +9,7 @@ import os
 import csv
 from PIL import Image
 
-# - - - - - - - - - - - - - - -- - - - - - - - - - - MAP CODE -- - - - - - - - -----------------------------------------------------------------#
+# -------------------------------------------- MAP CODE -------------------------------------------- #
 sns.set(style="whitegrid",palette='bright',color_codes=True) 
 sns.mpl.rc("figure", figsize=(10,6))
 shp_path="UKR_adm1/UKR_adm1.shp"
@@ -28,10 +28,8 @@ def read_shapefile(sf):
 df=read_shapefile(sf)
 
 
-# J'ai modifié cette fonction 
-def plot_map_fill_multiples_ids(title, city, sf,progress,day,x_lim = None,y_lim = None, figsize = (9,7)):
-  
-    
+
+def plot_map_fill_multiples_ids(title, city, sf,progress,day,x_lim = None,y_lim = None, figsize = (9,7)):    
     plt.figure(figsize = figsize)
     fig, ax = plt.subplots(figsize = figsize)
     ax.axis('off')
@@ -49,8 +47,7 @@ def plot_map_fill_multiples_ids(title, city, sf,progress,day,x_lim = None,y_lim 
             x_lon[ip] = shape_ex.points[ip][0]
             y_lat[ip] = shape_ex.points[ip][1]
         
-        # Partie modifiee 
-
+        # PART ADDED : To display the winner of the war and the progress of the invasion
         if title=='RUSSIA VICTORY':
             if i in {24,18,26,11,10,1,20,7,14}:
                 ax.fill(x_lon,y_lat, 'w')
@@ -74,7 +71,7 @@ def plot_map_fill_multiples_ids(title, city, sf,progress,day,x_lim = None,y_lim 
         elif 1>progress[i]>=0.5:
             ax.fill(x_lon,y_lat, 'tab:orange')
 
-        #_ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _  _ #
+        # ------------------------------------------------------- #
              
         x0 = np.mean(x_lon)
         y0 = np.mean(y_lat)
@@ -90,12 +87,12 @@ def plot_map_fill_multiples_ids(title, city, sf,progress,day,x_lim = None,y_lim 
     return None
     
 
-#--------------------------------- SIMULATION CODE ----------------------------------------------------------------------------------------------------------#
+# ------------------------------------------- SIMULATION CODE ------------------------------------------- #
 indices_map={"Cherkasy":0,"Chernihiv":1,"Chernivtsi":2,"Crimea":3,"Dnipropetrovs'k":4,"Donets'k":5,"Ivano-Frankisv'k":6,
-        "Kharkiv":7,"Kherson":8,"Khmel'nyts'kyy":9,"Kiev City":10,"Kiev":11,"Kirovohrad":12,
-                "L'viv":13,"Luhans'k":14,"Mykolayiv":15,"Odessa":16,"Poltava":17,"Rivne":18,"Sevastopol'":19,
-                "Sumy":20,"Ternopil'":21,"Transcarpathia":22,"Vinnytsya":23,"Volyn":24,"Zaporizhzhya":25,
-                "Zhytomyr":26}
+             "Kharkiv":7,"Kherson":8,"Khmel'nyts'kyy":9,"Kiev City":10,"Kiev":11,"Kirovohrad":12,
+             "L'viv":13,"Luhans'k":14,"Mykolayiv":15,"Odessa":16,"Poltava":17,"Rivne":18,"Sevastopol'":19,
+             "Sumy":20,"Ternopil'":21,"Transcarpathia":22,"Vinnytsya":23,"Volyn":24,"Zaporizhzhya":25,
+             "Zhytomyr":26}
 
 Regions ={"Cherkasy":0,"Chernihiv":1,"Chernivtsi":2,"Crimea":3,"Dnipropetrovs'k":4,"Donets'k":5,"Ivano-Frankisv'k":6,
         "Kharkiv":7,"Kherson":8,"Khmel'nyts'kyy":9,"Kiev":10,"Kirovohrad":11,
@@ -129,17 +126,20 @@ def simulation(soldiers,duration):
     envaded=[]
     j=0
     d=1
+
+    # SIMULATION LOOP
     while j<duration[0] and soldiers[len(soldiers)-1]>0 and city!='Kiev City':
         p=1
         if inv_dico==dict():
             lim=10
             m=0
             i=0
+
+            # Random choice of the first region to invade : Kharkiv, Sumy or Luhans'k
             for i in [K,L,S]:
                 if i >= m:
                     m=i
-            
-            
+                    
             if m==K:
                 city='Kharkiv'
 
@@ -181,8 +181,7 @@ def simulation(soldiers,duration):
             p+=1
             j+=1
         
-    
-        
+
     for l in envaded:
         for (c,a) in l:
             days.append(d)
@@ -219,14 +218,16 @@ def simulation(soldiers,duration):
         progress = [e for e in w['Progress']]
         plot_map_fill_multiples_ids('Day '+str(day), ids,sf,progress,day,x_lim = None,y_lim = None, figsize = (9,7))
     
-    
+    # If Kyiv is reached and fully conquered, the war is won
     if cities[len(cities)-1] == 'Kiev City' and percentages[len(percentages)-1] == 1:
         plot_map_fill_multiples_ids('RUSSIA VICTORY',[indices_map[c] for c in indices_map],sf,[],j+1,x_lim = None,y_lim = None, figsize = (9,7))
-            
+
+    # Otherwise, it is lost
     else:
         plot_map_fill_multiples_ids('UKRAINE VICTORY',[indices_map[c] for c in indices_map],sf,[],j+1,x_lim = None,y_lim = None, figsize = (9,7))
 
-            
+
+    # Creation of the images and the GIF image of the war
     frames = []
     imgs=[]
     for y in range(1,j+2):
@@ -241,7 +242,7 @@ def simulation(soldiers,duration):
                    save_all=True,
                    duration=325,optimize=False, loop=1)
     
-    
+    # Destruction of the images used to create the GIF (no longer needed)
     for t in range(1,j+2):
                 os.remove("Maps_invasion/Day "+str(t)+".png")
     
