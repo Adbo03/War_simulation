@@ -4,6 +4,7 @@ The idea behind this project was to code a war simulation in Python (Jupyter Not
 The goal of this simulation is to see, by fixing two constraints :
 - Number of soldiers
 - Number of days
+  
 the turnout of the war. 
 
 It's a really simple simulation that doesn't have for goal to depict the real war happening in Ukraine. In this simulation, we'll only focus on the attacker and the constraints it has to respect. If the day-limit is reached and the attacker didn't succeed in taking Kyiv, the war is lost. The war is also lost if the attacker has no more soldiers. Indeed, in this simulation, we'll only focus on 27 main cyties, each city representing a region of the country:
